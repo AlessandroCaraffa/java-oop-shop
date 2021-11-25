@@ -3,15 +3,25 @@ package it.shop;
 import java.util.Random;
 
 public class Prodotto {
+	
+	
+	
+	//attributi
 	private int codiceNumero;
 	private String nome;
 	private String descrizione;
 	private double prezzo;
-	private boolean iva ;
+	private double iva;                          // posso inizializzrla qui?
 	
+	
+	//costruttore
 	public Prodotto() {
 		this.codiceNumero = setCodice();
+//		this.iva = 0.22;
 	}
+	
+	
+	//metodi
 	
 	Random random = new Random ();
 	
@@ -37,16 +47,23 @@ public class Prodotto {
 	public double getPrezzo () {
 		return this.prezzo;
 	}
-	public void setIva (boolean iva) {
+	public void setIva (double iva) {
 		this.iva = iva;
 	}
-	public boolean getIva () {
+	public double getIva () {
 		return this.iva;
 	}
 	public int getCodiceNumero () {            //il nome deve combaciare?
 		return this.codiceNumero;
 	}
+	public double prezzoIva () {
+		double sconto =this.iva * this.prezzo;
+		return this.prezzo - sconto;
+	}
 	
+	public String nomeEsteso () {
+		return nome + codiceNumero;
+	}
 	
 	
 	
