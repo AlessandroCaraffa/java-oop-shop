@@ -3,67 +3,83 @@ package it.shop;
 import java.util.Random;
 
 public class Prodotto {
-	
+	Random random = new Random ();
 	
 	
 	//attributi
 	private int codiceNumero;
 	private String nome;
 	private String descrizione;
-	private double prezzo;
-	private double iva;                          // posso inizializzrla qui?
+	private float prezzo;
+	private float iva = 0.22f;	    
 	
-	
+
 	//costruttore
-	public Prodotto() {
+	public Prodotto(String nome, String descrizione, float prezzo) {
 		this.codiceNumero = setCodice();
-//		this.iva = 0.22;
+		this.nome = nome;
+		this.descrizione = descrizione ;
+		this.prezzo = prezzo;
 	}
 	
 	
 	//metodi
 	
-	Random random = new Random ();
+	//prezzo con iva
+		public double prezzoIva () {
+			return this.prezzo + (this.iva * this.prezzo);
+		}
+		
+		//nome esteso
+		public String nomeEsteso () {
+			return nome + codiceNumero;
+		}
 	
-	private int setCodice () {
-		return random.nextInt(99999);
-	}
 	
+	
+	
+	
+	//nome
 	public void setNome (String nome) {
 		this.nome = nome;
 	}
 	public String getNome () {
 		return this.nome;
 	}
+	
+	//descrizione
 	public void setDescrizione (String descrizione) {
 		this.descrizione = descrizione;
 	}
 	public String getDescrizione () {
 		return this.descrizione;
 	}
-	public void setPrezzo (double prezzo) {
+	
+	//prezzo
+	public void setPrezzo (float prezzo) {
 		this.prezzo = prezzo;
 	}
-	public double getPrezzo () {
+	public float getPrezzo () {
 		return this.prezzo;
 	}
-	public void setIva (double iva) {
+	
+	//iva
+	public void setIva (float iva) {
 		this.iva = iva;
 	}
-	public double getIva () {
+	public float getIva () {
 		return this.iva;
 	}
-	public int getCodiceNumero () {            //il nome deve combaciare?
+	
+	//codice
+	public int getCodice () {           
 		return this.codiceNumero;
 	}
-	public double prezzoIva () {
-		double sconto =this.iva * this.prezzo;
-		return this.prezzo - sconto;
+	
+	private int setCodice () {
+		return random.nextInt(99999);
 	}
 	
-	public String nomeEsteso () {
-		return nome + codiceNumero;
-	}
 	
 	
 	
